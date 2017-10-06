@@ -23,7 +23,7 @@ namespace BotApplication1.Dialogs
             int length = (activity.Text ?? string.Empty).Length;
 
             // return our reply to the user
-            await context.PostAsync($"Aleluia Jesus. Recebida mensgaem: {activity.Text}. que possui {length} characters");
+            await context.PostAsync($"Recebida mensgaem: {activity.Text}. que possui {length} characters");
 
             context.Wait(MessageReceivedAsync);
         }
