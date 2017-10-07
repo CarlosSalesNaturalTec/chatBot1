@@ -28,94 +28,99 @@ namespace BotApplication1.Dialogs
             context.UserData.TryGetValue<string>(
                 "CurrentBaseURL", out strBaseURL);
 
-            int intGuessedNumber;
-
             // Get the text passed
             var message = await argument;
 
-            // See if a number was passed
-            if (!int.TryParse(message.Text, out intGuessedNumber))
+            switch (message.Text)
             {
-                // A number was not passed  
+                #region ENTRAR
+                case "Entrar":
 
-                // Create a reply Activity
-                Activity replyToConversation = (Activity)context.MakeMessage();
-                replyToConversation.Recipient = replyToConversation.Recipient;
-                replyToConversation.Type = "message";
+                    // Create a reply Activity
+                    Activity replyToEntrar = (Activity)context.MakeMessage();
+                    replyToEntrar.Recipient = replyToEntrar.Recipient;
+                    replyToEntrar.Type = "message";
 
-                string strNumberGuesserCard =
-                    String.Format(@"{0}/{1}",
-                    strBaseURL,
-                    "Images/NumberGuesserCard.png");
+                    string strEntrar =
+                        String.Format(@"{0}/{1}",
+                        strBaseURL,
+                        "Images/NumberGuesserCard.png");
 
-                List<CardImage> cardImages = new List<CardImage>();
-                cardImages.Add(new CardImage(url: strNumberGuesserCard));
+                    List<CardImage> cardImagesEntrar = new List<CardImage>();
+                    cardImagesEntrar.Add(new CardImage(url: strEntrar));
 
-                // Create the Buttons
-                // Call the CreateButtons utility method
-                List<CardAction> cardButtons = CreateButtons();
+                    // Create the Buttons
+                    // Call the CreateButtons utility method
+                    List<CardAction> cardButtonsEntrar = CreateButtonsEntrar();
 
-                // Create the Hero Card
-                // Set the image and the buttons
-                HeroCard plCard = new HeroCard()
-                {
-                    Images = cardImages,
-                    Buttons = cardButtons,
-                };
+                    // Create the Hero Card
+                    // Set the image and the buttons
+                    HeroCard plCardEntrar = new HeroCard()
+                    {
+                        Images = cardImagesEntrar,
+                        Buttons = cardButtonsEntrar,
+                    };
 
-                // Create an Attachment by calling the
-                // ToAttachment() method of the Hero Card                
-                Attachment plAttachment = plCard.ToAttachment();
-                // Attach the Attachment to the reply
-                replyToConversation.Attachments.Add(plAttachment);
-                // set the AttachmentLayout as 'list'
-                replyToConversation.AttachmentLayout = "list";
+                    // Create an Attachment by calling the
+                    // ToAttachment() method of the Hero Card                
+                    Attachment plAttachmentEntrar = plCardEntrar.ToAttachment();
+                    // Attach the Attachment to the reply
+                    replyToEntrar.Attachments.Add(plAttachmentEntrar);
+                    // set the AttachmentLayout as 'list'
+                    replyToEntrar.AttachmentLayout = "list";
 
-                // Send the reply
-                await context.PostAsync(replyToConversation);
-                context.Wait(MessageReceivedAsync);
-            }
+                    // Send the reply
+                    await context.PostAsync(replyToEntrar);
+                    context.Wait(MessageReceivedAsync);
+                    break;
+                #endregion
 
-            // This code will run when the user has entered a number
-            if (int.TryParse(message.Text, out intGuessedNumber))
-            {
-                // A number was passed
-                // See if it was the correct number
-                if (intGuessedNumber != this.intNumberToGuess)
-                {
-                    // The number was not correct
-                    this.intAttempts++;
+                #region MENU INICIAL
+                default:
 
-                    // Create a response
-                    // This time call the ** ShowButtons ** method
-                    Activity replyToConversation =
-                        ShowButtons(context, "Not correct. Guess again.");
+                    // MENU INICIAL
 
+                    // Create a reply Activity
+                    Activity replyToConversation = (Activity)context.MakeMessage();
+                    replyToConversation.Recipient = replyToConversation.Recipient;
+                    replyToConversation.Type = "message";
+
+                    string strNumberGuesserCard =
+                        String.Format(@"{0}/{1}",
+                        strBaseURL,
+                        "Images/NumberGuesserCard.png");
+
+                    List<CardImage> cardImages = new List<CardImage>();
+                    cardImages.Add(new CardImage(url: strNumberGuesserCard));
+
+                    // Create the Buttons
+                    // Call the CreateButtons utility method
+                    List<CardAction> cardButtons = CreateButtons();
+
+                    // Create the Hero Card
+                    // Set the image and the buttons
+                    HeroCard plCard = new HeroCard()
+                    {
+                        Images = cardImages,
+                        Buttons = cardButtons,
+                    };
+
+                    // Create an Attachment by calling the
+                    // ToAttachment() method of the Hero Card                
+                    Attachment plAttachment = plCard.ToAttachment();
+                    // Attach the Attachment to the reply
+                    replyToConversation.Attachments.Add(plAttachment);
+                    // set the AttachmentLayout as 'list'
+                    replyToConversation.AttachmentLayout = "list";
+
+                    // Send the reply
                     await context.PostAsync(replyToConversation);
                     context.Wait(MessageReceivedAsync);
-                }
-                else
-                {
-                    // Game completed
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("Congratulations! ");
-                    sb.Append("The number to guess was {0}. ");
-                    sb.Append("You needed {1} attempts. ");
-                    sb.Append("Would you like to play again?");
-
-                    string CongratulationsStringPrompt =
-                        string.Format(sb.ToString(),
-                        this.intNumberToGuess,
-                        this.intAttempts);
-
-                    // Put PromptDialog here
-                    PromptDialog.Confirm(
-                        context,
-                        PlayAgainAsync,
-                        CongratulationsStringPrompt,
-                        "Didn't get that!");
-                }
+                    break;
+                    #endregion
             }
+
+
         }
 
         private async Task PlayAgainAsync(IDialogContext context, IAwaitable<bool> result)
@@ -149,7 +154,7 @@ namespace BotApplication1.Dialogs
 
         // Utility
 
-        #region private static List<CardAction> CreateButtons()
+        #region BOTÕES MENU INICIAL
         private static List<CardAction> CreateButtons()
         {
             // Create 5 CardAction buttons 
@@ -186,6 +191,65 @@ namespace BotApplication1.Dialogs
             return cardButtons;
         }
         #endregion
+
+        #region BOTÕES MENU ENTRAR
+        private static List<CardAction> CreateButtonsEntrar()
+        {
+            // Create CardAction buttons 
+            // and return to the calling method 
+            List<CardAction> cardButtons = new List<CardAction>();
+
+            // Opção 1
+            CardAction CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "Conhecer o Desafio",
+                Value = "OP1_1"
+            };
+            cardButtons.Add(CardButton);
+
+            // Opção 2
+            CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "Recrutar",
+                Value = "OP1_2"
+            };
+            cardButtons.Add(CardButton);
+
+            // Opção 3
+            CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "MeusAgentes Virtuais",
+                Value = "OP1_3"
+            };
+            cardButtons.Add(CardButton);
+
+
+            // Opção 4
+            CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "Laboratório",
+                Value = "OP1_4"
+            };
+            cardButtons.Add(CardButton);
+
+            // Opção 5
+            CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "Meu Saldo",
+                Value = "OP1_5"
+            };
+            cardButtons.Add(CardButton);
+
+
+            return cardButtons;
+        }
+        #endregion
+
 
         #region private static Activity ShowButtons(IDialogContext context, string strText)
         private static Activity ShowButtons(IDialogContext context, string strText)
