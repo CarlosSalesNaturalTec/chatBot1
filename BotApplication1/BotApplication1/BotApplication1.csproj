@@ -113,8 +113,8 @@
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
     <Content Include="Images\mosquitozero.png" />
-    <Content Include="Images\NumberGuesserCard.png" />
-    <Content Include="Images\NumberGuesserOpeningCard.png" />
+    <Content Include="Images\Imagem1.png" />
+    <Content Include="Images\Imagem2.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

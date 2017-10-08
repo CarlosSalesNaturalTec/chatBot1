@@ -11,7 +11,6 @@ namespace BotApplication1.Dialogs
     public class DialogPrompt : IDialog<object>
     {
         string strBaseURL;
-        string str0, str1, str2, str3, str4, str5;
 
         #region public async Task StartAsync(IDialogContext context)
         public async Task StartAsync(IDialogContext context)
@@ -43,7 +42,7 @@ namespace BotApplication1.Dialogs
                     string strEntrar =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImagesEntrar = new List<CardImage>();
                     cardImagesEntrar.Add(new CardImage(url: strEntrar));
@@ -77,7 +76,6 @@ namespace BotApplication1.Dialogs
                 #region GAME - CONHECER DESAFIO
                 case "Como Funciona":
 
-                    string str0 = "Oiiii";
                     string str1 = "Este é um game cujo objetivo é eliminar de todas as formas o Aedes Aegypti que é o mosquito causador da Dengue, Zika, Chincungunha, Microcefalia e Febre Amarela.";
                     string str2 = "Você pode participar de duas formas:";
                     string str3 = "1) Virtualmente: recrutando Agentes Virtuais em nosso Reality Game.";
@@ -85,7 +83,6 @@ namespace BotApplication1.Dialogs
                     string str5 = "Sua evolução será convertida em moedas virtuais que você pode usar para subir de nível no game ou trocar por Miniaturas reais dos nossos Mascotes.";
 
                     // Send the reply
-                    await context.PostAsync(str0);
                     await context.PostAsync(str1);
                     await context.PostAsync(str2);
                     await context.PostAsync(str3);
@@ -112,7 +109,7 @@ namespace BotApplication1.Dialogs
                     string strPatrulha =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImagesPatrulha = new List<CardImage>();
                     cardImagesPatrulha.Add(new CardImage(url: strPatrulha));
@@ -153,7 +150,7 @@ namespace BotApplication1.Dialogs
                     string strPatrulhaNovo =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImagesPatrulhaNovo = new List<CardImage>();
                     cardImagesPatrulhaNovo.Add(new CardImage(url: strPatrulhaNovo));
@@ -345,7 +342,7 @@ namespace BotApplication1.Dialogs
                     string strMaratona =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImagesMaratona = new List<CardImage>();
                     cardImagesMaratona.Add(new CardImage(url: strMaratona));
@@ -461,7 +458,7 @@ namespace BotApplication1.Dialogs
                     string strPodium =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImagesPodium = new List<CardImage>();
                     cardImagesPodium.Add(new CardImage(url: strPodium));
@@ -502,7 +499,7 @@ namespace BotApplication1.Dialogs
                     string strApoio =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImagesApoio = new List<CardImage>();
                     cardImagesApoio.Add(new CardImage(url: strApoio));
@@ -533,6 +530,17 @@ namespace BotApplication1.Dialogs
                     break;
                 #endregion
 
+                #region APOIO - SOLICITAR VISITA
+                case "Visita":
+
+                    string str0 = "Informe sua Localização";
+ 
+                    // Send the reply
+                    await context.PostAsync(str0);
+                    context.Wait(MessageReceivedAsync);
+                    break;
+                #endregion
+
                 #region APOIO - ORIENTAÇÕES
                 case "Orientações":
                     // Create a reply Activity
@@ -543,7 +551,7 @@ namespace BotApplication1.Dialogs
                     string strOrienta =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImagesOrienta = new List<CardImage>();
                     cardImagesOrienta.Add(new CardImage(url: strOrienta));
@@ -584,7 +592,7 @@ namespace BotApplication1.Dialogs
                     string strConhecer =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImagesConhecer = new List<CardImage>();
                     cardImagesConhecer.Add(new CardImage(url: strConhecer));
@@ -628,7 +636,7 @@ namespace BotApplication1.Dialogs
                     string strNumberGuesserCard =
                         String.Format(@"{0}/{1}",
                         strBaseURL,
-                        "Images/NumberGuesserCard.png");
+                        "Images/Imagem1.png");
 
                     List<CardImage> cardImages = new List<CardImage>();
                     cardImages.Add(new CardImage(url: strNumberGuesserCard));

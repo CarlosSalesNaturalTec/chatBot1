@@ -48,7 +48,7 @@ namespace BotApplication1
 
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.DialogPrompt());
+                await Conversation.SendAsync(activity, () => new Dialogs.RootLuisDialog());
             }
             else
             {
@@ -91,7 +91,7 @@ namespace BotApplication1
                 string strNumberGuesserOpeningCard =
                     String.Format(@"{0}/{1}",
                     strCurrentURL,
-                    "Images/NumberGuesserOpeningCard.png");
+                    "Images/Imagem1.png");
 
                 // Create a CardImage and add our image
                 List<CardImage> cardImages1 = new List<CardImage>();
