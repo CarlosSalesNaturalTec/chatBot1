@@ -32,8 +32,8 @@ namespace BotApplication1.Dialogs
 
             switch (message.Text)
             {
-                #region ENTRAR
-                case "Entrar":
+                #region GAME
+                case "Game":
 
                     // Create a reply Activity
                     Activity replyToEntrar = (Activity)context.MakeMessage();
@@ -74,10 +74,10 @@ namespace BotApplication1.Dialogs
                     break;
                 #endregion
 
-                #region ENTRAR - CONHECER DESAFIO
-                case "Desafio":
+                #region GAME - CONHECER DESAFIO
+                case "Como Funciona":
 
-                    string str0 = "Oi ;)";
+                    string str0 = "Oiiii";
                     string str1 = "Este é um game cujo objetivo é eliminar de todas as formas o Aedes Aegypti que é o mosquito causador da Dengue, Zika, Chincungunha, Microcefalia e Febre Amarela.";
                     string str2 = "Você pode participar de duas formas:";
                     string str3 = "1) Virtualmente: recrutando Agentes Virtuais em nosso Reality Game.";
@@ -92,11 +92,16 @@ namespace BotApplication1.Dialogs
                     await context.PostAsync(str4);
                     await context.PostAsync(str5);
 
-                    context.Wait(MessageReceivedAsync);
+                    string game_str1 = "Comerçar a Jorgar ?";
+                    PromptDialog.Confirm(
+                       context,
+                       GameStart,
+                       game_str1,
+                       "Desculpa, não entedi.");
                     break;
                 #endregion
 
-                #region ENTRAR - PATRULHA
+                #region GAME - PATRULHA
                 case "Patrulha":
 
                     // Create a reply Activity
@@ -138,7 +143,7 @@ namespace BotApplication1.Dialogs
                     break;
                 #endregion
 
-                #region ENTRAR - PATRULHA - NOVO AGENTE
+                #region GAME - PATRULHA - NOVO AGENTE
                 case "Novo Agente":
                     // Create a reply Activity
                     Activity replyToPatrulhaNovo = (Activity)context.MakeMessage();
@@ -180,7 +185,97 @@ namespace BotApplication1.Dialogs
                     break;
                 #endregion
 
-                #region ENTRAR - PATRULHA - MEUS AGENTES
+                #region GAME - PATRULHA - NOVO AGENTE - RECRUTA
+                case "Agente Recruta":
+
+                    string recruta_str0 = "AGENTE RECRUTA";
+                    string recruta_str1 = "Valor: 500 Moedas";
+                    string recruta_str2 = "Eficiência: 60 Mosquitos por Hora";
+                    string recruta_str3 = "Seu Saldo : 1.000 Moedas";
+                    string recruta_str4 = "Comprar Agente";
+
+                    // Send the reply
+                    await context.PostAsync(recruta_str0);
+                    await context.PostAsync(recruta_str1);
+                    await context.PostAsync(recruta_str2);
+                    await context.PostAsync(recruta_str3);
+                    
+                    PromptDialog.Confirm(
+                       context,
+                       RecrutaComprar,
+                       recruta_str4,
+                       "Desculpa, não entedi.");
+                    break;
+                #endregion
+
+                #region GAME - PATRULHA - NOVO AGENTE - COMBATENTE
+                case "Agente Combatente":
+                    string Combatente_str0 = "AGENTE COMBATENTE";
+                    string Combatente_str1 = "Valor: 5.000 Moedas";
+                    string Combatente_str2 = "Eficiência: 600 Mosquitos por Hora";
+                    string Combatente_str3 = "Seu Saldo : 1.000 Moedas";
+                    string Combatente_str4 = "Recrutar Agente";
+
+                    // Send the reply
+                    await context.PostAsync(Combatente_str0);
+                    await context.PostAsync(Combatente_str1);
+                    await context.PostAsync(Combatente_str2);
+                    await context.PostAsync(Combatente_str3);
+
+                    PromptDialog.Confirm(
+                       context,
+                       CombatenteComprar,
+                       Combatente_str4,
+                       "Desculpa, não entedi.");
+                    break;
+                #endregion
+
+                #region GAME - PATRULHA - NOVO AGENTE - OFICIAL
+                case "Agente Oficial":
+                    string Oficial_str0 = "AGENTE OFICIAL";
+                    string Oficial_str1 = "Valor: 10.000 Moedas";
+                    string Oficial_str2 = "Eficiência: 6.000 Mosquitos por Hora";
+                    string Oficial_str3 = "Seu Saldo : 1.000 Moedas";
+                    string Oficial_str4 = "Recrutar Agente";
+
+                    // Send the reply
+                    await context.PostAsync(Oficial_str0);
+                    await context.PostAsync(Oficial_str1);
+                    await context.PostAsync(Oficial_str2);
+                    await context.PostAsync(Oficial_str3);
+
+                    PromptDialog.Confirm(
+                       context,
+                       OficialComprar,
+                       Oficial_str4,
+                       "Desculpa, não entedi.");
+                    break;
+                #endregion
+
+                #region GAME - PATRULHA - NOVO AGENTE - MEDICO
+                case "Agente Médico":
+                    string Medico_str0 = "AGENTE MÉDICO";
+                    string Medico_str1 = "Valor: 10.000 Moedas";
+                    string Medico_str2 = "Eficiência: 10 pacientes atendidos por Dia";
+                    string Medico_str3 = "Seu Saldo : 1.000 Moedas";
+                    string Medico_str4 = "Recrutar Agente";
+
+                    // Send the reply
+                    await context.PostAsync(Medico_str0);
+                    await context.PostAsync(Medico_str1);
+                    await context.PostAsync(Medico_str2);
+                    await context.PostAsync(Medico_str3);
+
+                    PromptDialog.Confirm(
+                       context,
+                       MedicoComprar,
+                       Medico_str4,
+                       "Desculpa, não entedi.");
+                    break;
+                #endregion
+
+
+                #region GAME - PATRULHA - MEUS AGENTES
                 case "Meus Agentes":
 
                     string MA_str1 = "Você ainda não Recrutou Nenhum Agente.";
@@ -197,7 +292,7 @@ namespace BotApplication1.Dialogs
                     break;
                 #endregion
 
-                #region ENTRAR - PATRULHA - LABORATORIO
+                #region GAME - PATRULHA - LABORATORIO
                 case "Laboratorio":
 
                     string lab_str1 = "Os Agentes que vc recrutou trabalham aqui. Eles Caçam os mosquitos e os trazem para cá.";
@@ -210,11 +305,16 @@ namespace BotApplication1.Dialogs
                     await context.PostAsync(lab_str3);
                     await context.PostAsync(lab_str4);
 
+                    Activity replyToConversationLAB =
+                         ShowButtonsGame(context, "O que gostaria de fazer agora ?");
+
+                    await context.PostAsync(replyToConversationLAB);
                     context.Wait(MessageReceivedAsync);
+
                     break;
                 #endregion
 
-                #region ENTRAR - PATRULHA - MEU SALDO
+                #region GAME - PATRULHA - MEU SALDO
                 case "Saldo":
 
                     string SLD_str1 = "Aqui vc visualiza a quantidade de mosquitos que seus agentes caçaram e poderá trocá-los por moedas virtuais.";
@@ -225,11 +325,16 @@ namespace BotApplication1.Dialogs
                     await context.PostAsync(SLD_str2);
                     await context.PostAsync(SLD_str3);
 
+                    Activity replyToConversationSld =
+                         ShowButtonsGame(context, "O que gostaria de fazer agora ?");
+
+                    await context.PostAsync(replyToConversationSld);
                     context.Wait(MessageReceivedAsync);
+
                     break;
                 #endregion
 
-                #region ENTRAR - MARATONA
+                #region GAME - MARATONA
                 case "Maratona":
 
                     // Create a reply Activity
@@ -271,15 +376,81 @@ namespace BotApplication1.Dialogs
                     break;
                 #endregion
 
-                #region ENTRAR - FOCOS REAIS
-                case "Focos":
-                    string foco_str1 = "Denuncie focos reais do Mosquito na sua cidade e Ganhe muito mais Moedas e Medalhas.";
-                    await context.PostAsync(foco_str1);
+                #region GAME - MARATONA - INICIANTE
+                case "Maratona Iniciante":
+
+                    string ini_str1 = "Desefie a tropa de Mosquitos e ganhe mais Moedas e Medalhes";
+                    string ini_str2 = "Perguntas e Respostas - Nível Iniciante";
+                    string ini_str3 = "Agaurde conclusão da Plataforma";
+
+                    await context.PostAsync(ini_str1);
+                    await context.PostAsync(ini_str2);
+                    await context.PostAsync(ini_str3);
+
+                    Activity replyToConversationIni =
+                         ShowButtonsGame(context, "O que gostaria de fazer agora ?");
+
+                    await context.PostAsync(replyToConversationIni);
                     context.Wait(MessageReceivedAsync);
+
                     break;
                 #endregion
 
-                #region ENTRAR - PODIUM
+                #region GAME - MARATONA - COMBATENTE
+                case "Maratona Combatente":
+
+                    string COMB_str1 = "Desefie a tropa de Mosquitos e ganhe mais Moedas e Medalhes";
+                    string COMB_str2 = "Perguntas e Respostas - Nível Médio";
+                    string COMB_str3 = "Agaurde conclusão da Plataforma";
+
+                    await context.PostAsync(COMB_str1);
+                    await context.PostAsync(COMB_str2);
+                    await context.PostAsync(COMB_str3);
+
+                    Activity replyToConversationComb =
+                         ShowButtonsGame(context, "O que gostaria de fazer agora ?");
+
+                    await context.PostAsync(replyToConversationComb);
+                    context.Wait(MessageReceivedAsync);
+
+                    break;
+                #endregion
+
+                #region GAME - MARATONA - EXPERT
+                case "Maratona Expert":
+
+                    string EXP_str1 = "Desefie a tropa de Mosquitos e ganhe mais Moedas e Medalhes";
+                    string EXP_str2 = "Perguntas e Respostas - Nível Avançado";
+                    string EXP_str3 = "Agaurde conclusão da Plataforma";
+
+                    await context.PostAsync(EXP_str1);
+                    await context.PostAsync(EXP_str2);
+                    await context.PostAsync(EXP_str3);
+
+                    Activity replyToConversationExp =
+                         ShowButtonsGame(context, "O que gostaria de fazer agora ?");
+
+                    await context.PostAsync(replyToConversationExp);
+                    context.Wait(MessageReceivedAsync);
+
+                    break;
+                #endregion
+
+                #region GAME - FOCOS REAIS
+                case "Focos":
+                    string foco_str1 = "Denuncie focos reais do Mosquito na sua cidade e Ganhe muito mais Moedas e Medalhas.";
+                    await context.PostAsync(foco_str1);
+
+                    Activity replyToConversationdeNUNC =
+                         ShowButtonsGame(context, "O que gostaria de fazer agora ?");
+
+                    await context.PostAsync(replyToConversationdeNUNC);
+                    context.Wait(MessageReceivedAsync);
+
+                    break;
+                #endregion
+
+                #region GAME - PODIUM
                 case "Podium":
 
                     // Create a reply Activity
@@ -499,20 +670,172 @@ namespace BotApplication1.Dialogs
 
             if (confirm) // They said yes
             {
-                string NA_str1 = "Aguarde conclusão da Plataforma";
-                await context.PostAsync(NA_str1);
+                Activity replyToConversation =
+                         ShowButtonsAgentes(context, "Escolha um Agente");
+
+                await context.PostAsync(replyToConversation);
                 context.Wait(MessageReceivedAsync);
             }
             else // They said no
             {
                 Activity replyToConversation =
-                         ShowButtons(context, "Ok. Sem problemas");
+                         ShowButtons(context, "Ok. Sem problemas. Estou por aqui às suas ordens.");
 
                 await context.PostAsync(replyToConversation);
                 context.Wait(MessageReceivedAsync);
             }
         }
 
+        private async Task GameStart(IDialogContext context, IAwaitable<bool> result)
+        {
+
+            // Get the response from the user
+            var confirm = await result;
+
+            if (confirm) // They said yes
+            {
+                // Create a response
+                // This time call the ** ShowButtons ** method
+                Activity replyToConversation =
+                    ShowButtonsGame(context, "Gostei!!! Vamos lá então, escolha uma opção...");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+
+            }
+            else // They said no
+            {
+                Activity replyToConversation =
+                         ShowButtons(context, "Ok, sem problemas. Podemos conversar então... Fala ai qualquer coisa...rsrsrs");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+            }
+        }
+
+        private async Task RecrutaComprar(IDialogContext context, IAwaitable<bool> result)
+        {
+
+            // Get the response from the user
+            var confirm = await result;
+
+            if (confirm) // They said yes
+            {
+                string NA_str1 = "Agente Recrutado com Sucesso.";
+                string NA_str2 = "Seu Saldo: 400 moedas";
+                string NA_str3 = "Agente já está Caçando Mosquitos. Daqui a uma hora te lembrarei para vc trocar os mosquitos caçados por Novas Moedas";
+                await context.PostAsync(NA_str1);
+                await context.PostAsync(NA_str2);
+                await context.PostAsync(NA_str3);
+
+                context.Wait(MessageReceivedAsync);
+                
+            }
+            else // They said no
+            {
+                Activity replyToConversation =
+                         ShowButtonsAgentes(context, "Escolha um Agente!");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+            }
+        }
+
+        private async Task CombatenteComprar(IDialogContext context, IAwaitable<bool> result)
+        {
+
+            // Get the response from the user
+            var confirm = await result;
+
+            if (confirm) // They said yes
+            {
+                string NA_str1 = "Humm. Você não tem saldo suficiente para comprar este Agente. Ele custa 5.000 moedas e vc só tem 1.000 moedas em sua conta.";
+                string NA_str2 = "Tente comprar outro robô para oqual vc tenha moedas suficientes.";
+                await context.PostAsync(NA_str1);
+                await context.PostAsync(NA_str2);
+
+                // Create a response
+                // This time call the ** ShowButtons ** method
+                Activity replyToConversation =
+                    ShowButtonsAgentes(context, "Vamos lá, não desista!!!!");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+
+            }
+            else // They said no
+            {
+                Activity replyToConversation =
+                         ShowButtonsAgentes(context, "Escolha!");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+            }
+        }
+
+        private async Task OficialComprar(IDialogContext context, IAwaitable<bool> result)
+        {
+
+            // Get the response from the user
+            var confirm = await result;
+
+            if (confirm) // They said yes
+            {
+                string NA_str1 = "Humm. Você não tem saldo suficiente para comprar este Agente. Ele custa 10.000 moedas e vc só tem 1.000 moedas em sua conta.";
+                string NA_str2 = "Tente comprar outro robô para o qual vc tenha moedas suficientes.";
+                await context.PostAsync(NA_str1);
+                await context.PostAsync(NA_str2);
+
+                // Create a response
+                // This time call the ** ShowButtons ** method
+                Activity replyToConversation =
+                    ShowButtonsAgentes(context, "Vamos lá, não desista!!!!");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+
+            }
+            else // They said no
+            {
+                Activity replyToConversation =
+                         ShowButtonsAgentes(context, "Escolha outro agente!");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+            }
+        }
+
+        private async Task MedicoComprar(IDialogContext context, IAwaitable<bool> result)
+        {
+
+            // Get the response from the user
+            var confirm = await result;
+
+            if (confirm) // They said yes
+            {
+                string NA_str1 = "Humm. Você não tem saldo suficiente para comprar este Agente. Ele custa 10.000 moedas e vc só tem 1.000 moedas em sua conta.";
+                string NA_str2 = "Tente comprar outro robô para o qual vc tenha moedas suficientes.";
+                await context.PostAsync(NA_str1);
+                await context.PostAsync(NA_str2);
+
+                // Create a response
+                // This time call the ** ShowButtons ** method
+                Activity replyToConversation =
+                    ShowButtonsAgentes(context, "Vamos lá, não desista!!!!");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+
+            }
+            else // They said no
+            {
+                Activity replyToConversation =
+                         ShowButtonsAgentes(context, "Escolha outro Agente então!");
+
+                await context.PostAsync(replyToConversation);
+                context.Wait(MessageReceivedAsync);
+            }
+        }
 
 
         // Utility
@@ -528,8 +851,8 @@ namespace BotApplication1.Dialogs
             CardAction CardButton = new CardAction()
             {
                 Type = "imBack",
-                Title = "Entrar",
-                Value = "Entrar"
+                Title = "Game",
+                Value = "Game"
             };
             cardButtons.Add(CardButton);
 
@@ -555,7 +878,7 @@ namespace BotApplication1.Dialogs
         }
         #endregion
 
-        #region BOTÕES MENU ENTRAR
+        #region BOTÕES MENU GAME
         private static List<CardAction> CreateButtonsEntrar()
         {
             // Create CardAction buttons 
@@ -566,8 +889,8 @@ namespace BotApplication1.Dialogs
             CardAction CardButton = new CardAction()
             {
                 Type = "imBack",
-                Title = "Conhecer o Desafio",
-                Value = "Desafio"
+                Title = "Como Funciona",
+                Value = "Como Funciona"
             };
             cardButtons.Add(CardButton);
 
@@ -613,7 +936,57 @@ namespace BotApplication1.Dialogs
         }
         #endregion
 
-        #region BOTÕES MENU ENTRAR - PATRULHA
+        #region BOTÕES MENU GAME - START
+        private static List<CardAction> CreateButtonsGameStart()
+        {
+            // Create CardAction buttons 
+            // and return to the calling method 
+            List<CardAction> cardButtons = new List<CardAction>();
+
+            // Opção 1
+            CardAction CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "Patrulha",
+                Value = "Patrulha"
+            };
+            cardButtons.Add(CardButton);
+
+            // Opção 2
+            CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "Maratona",
+                Value = "Maratona"
+            };
+            cardButtons.Add(CardButton);
+
+
+            // Opção 3
+            CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "Focos Reais",
+                Value = "Focos"
+            };
+            cardButtons.Add(CardButton);
+
+            // Opção 4
+            CardButton = new CardAction()
+            {
+                Type = "imBack",
+                Title = "Podium",
+                Value = "Podium"
+            };
+            cardButtons.Add(CardButton);
+
+
+            return cardButtons;
+        }
+        #endregion
+
+
+        #region BOTÕES MENU GAME - PATRULHA
         private static List<CardAction> CreateButtonsPatrulha()
         {
             // Create CardAction buttons 
@@ -661,7 +1034,7 @@ namespace BotApplication1.Dialogs
         }
         #endregion
 
-        #region BOTÕES MENU ENTRAR - PATRULHA - NOVO AGENTE
+        #region BOTÕES MENU GAME - PATRULHA - NOVO AGENTE
         private static List<CardAction> CreateButtonsPatrulhaNovo()
         {
             // Create CardAction buttons 
@@ -709,7 +1082,7 @@ namespace BotApplication1.Dialogs
         }
         #endregion
 
-        #region BOTÕES MENU ENTRAR - MARATONA
+        #region BOTÕES MENU GAME - MARATONA
         private static List<CardAction> CreateButtonsMaratona()
         {
             // Create CardAction buttons 
@@ -747,7 +1120,7 @@ namespace BotApplication1.Dialogs
         }
         #endregion
 
-        #region BOTÕES MENU ENTRAR - PODIUM
+        #region BOTÕES MENU GAME - PODIUM
         private static List<CardAction> CreateButtonsPodium()
         {
             // Create CardAction buttons 
@@ -891,7 +1264,7 @@ namespace BotApplication1.Dialogs
         }
         #endregion
 
-        #region private static Activity ShowButtons(IDialogContext context, string strText)
+        #region Mostrar Botões Menu Inicial
         private static Activity ShowButtons(IDialogContext context, string strText)
         {
             // Create a reply Activity
@@ -920,5 +1293,67 @@ namespace BotApplication1.Dialogs
             return replyToConversation;
         }
         #endregion
+
+        #region Mostrar Botões Game
+        private static Activity ShowButtonsGame(IDialogContext context, string strText)
+        {
+            // Create a reply Activity
+            Activity replyToConversation = (Activity)context.MakeMessage();
+            replyToConversation.Text = strText;
+            replyToConversation.Recipient = replyToConversation.Recipient;
+            replyToConversation.Type = "message";
+
+            // Call the CreateButtons utility method 
+            // that will create 5 buttons to put on the Here Card
+            List<CardAction> cardButtons = CreateButtonsGameStart();
+
+            // Create a Hero Card and add the buttons 
+            HeroCard plCard = new HeroCard()
+            {
+                Buttons = cardButtons
+            };
+
+            // Create an Attachment
+            // set the AttachmentLayout as 'list'
+            Attachment plAttachment = plCard.ToAttachment();
+            replyToConversation.Attachments.Add(plAttachment);
+            replyToConversation.AttachmentLayout = "list";
+
+            // Return the reply to the calling method
+            return replyToConversation;
+        }
+        #endregion
+
+        #region Mostrar Botões Novo Agente
+        private static Activity ShowButtonsAgentes(IDialogContext context, string strText)
+        {
+            // Create a reply Activity
+            Activity replyToConversation = (Activity)context.MakeMessage();
+            replyToConversation.Text = strText;
+            replyToConversation.Recipient = replyToConversation.Recipient;
+            replyToConversation.Type = "message";
+
+            // Call the CreateButtons utility method 
+            // that will create 5 buttons to put on the Here Card
+            List<CardAction> cardButtons = CreateButtonsPatrulhaNovo();
+
+            // Create a Hero Card and add the buttons 
+            HeroCard plCard = new HeroCard()
+            {
+                Buttons = cardButtons
+            };
+
+            // Create an Attachment
+            // set the AttachmentLayout as 'list'
+            Attachment plAttachment = plCard.ToAttachment();
+            replyToConversation.Attachments.Add(plAttachment);
+            replyToConversation.AttachmentLayout = "list";
+
+            // Return the reply to the calling method
+            return replyToConversation;
+        }
+        #endregion
+
+
     }
 }
